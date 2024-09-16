@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --pastel: #90f5b5;
+  --gray: #e2e8f0;
+}
+
 html {
   font-size: 1.15rem;
 }
@@ -39,7 +44,7 @@ li {
 }
 
 #sidebar {
-  background-color: palegoldenrod;
+  background-color: var(--pastel);
   position: sticky;
   top: 0;
   align-self: start;
@@ -71,14 +76,15 @@ li {
 
 #header {
   background-color: white;
-
+  z-index: 1000;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* More vertical offset and blur for lifted effect */
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   grid-template-rows: 1fr 1fr;
 }
 
 #search-cont {
-  background-color: dimgray;
+  /*background-color: dimgray;*/
   display: grid;
   grid-template-columns: 1fr 8fr;
   align-items: center;
@@ -92,6 +98,9 @@ li {
 input[type="search"] {
   height: 40px;
   width: 700px;
+  background-color: var(--gray);
+  font-size: 0.9rem;
+  padding: 8px;
   align-self: center;
   justify-self: start;
   border-radius: 50px;
@@ -99,13 +108,21 @@ input[type="search"] {
 
 
 #profile-cont {
-  background-color: palevioletred;
+  /*background-color: palevioletred;*/
   display: grid;
   padding-right: 3em;
   grid-template-columns: 1fr max-content max-content max-content;
-  gap: 3em;
+  gap: 2em;
   justify-items: center;
   align-items: center;
+}
+
+.hover-icon {
+  transition: filter 0.2s ease-in-out; /* Ease in and out */
+}
+
+.hover-icon:hover {
+  filter: invert(64%) sepia(48%) saturate(382%) hue-rotate(98deg) brightness(101%) contrast(91%);
 }
 
 .pfp {
@@ -119,15 +136,20 @@ input[type="search"] {
 
 #user-name {
   font-size: 1.2em;
-  font-weight: 400;
+  font-weight: 500;
+  margin-left: -8px;
 }
 
 #greeting-cont {
-  background-color: hotpink;
+  /*background-color: hotpink;*/
   display: grid;
   grid-template-columns: 1fr 3fr 3fr;
   align-items: center;
   gap: 16px;
+}
+
+#greeting2 {
+  color: rgba(0, 0, 0, 0.75);
 }
 
 #main-pfp {
@@ -139,28 +161,35 @@ input[type="search"] {
 }
 
 #buttons-cont {
-  background-color: slategray;
+  /*background-color: slategray;*/
   display: grid;
   grid-template-columns: max-content max-content max-content;
-  gap: 3em;
-  justify-items: start;
+  gap: 2em;
+  justify-content: center;
   align-items: center;
 }
 
 button {
   height: 35px;
   width: 125px;
+  border: black 1.5px solid;
+  cursor: pointer;
+  background-color: var(--pastel);
+  color: black;
   border-radius: 20px;
 }
 
+button:hover {
+  border: black 2px solid;
+}
+
 #main {
-  background-color: paleturquoise;
   display: grid;
   grid-template-columns: 3fr 1fr;
 }
 
 #projects-cont {
-  background-color: navajowhite;
+  background-color: var(--gray);
   display: grid;
   grid-template-rows: max-content 1fr;
   grid-row: 1 / 3;
@@ -174,12 +203,21 @@ button {
 }
 
 .card-item {
-  background-color: palegreen;
+  /*background-color: palegreen;*/
+  background-color: white;
+  border-left: 8px solid #879a8e;
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.2); /* Right and bottom shadow */
+  border-radius: 10px;
   height: 250px;
   padding: 1.2rem;
   display: grid;
-  gap: 32px;
+  gap: 48px;
   grid-template-rows: max-content max-content max-content;
+}
+
+.card-text {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 0.95rem;
 }
 
 .card-icons {
@@ -189,7 +227,7 @@ button {
 }
 
 .card-header {
-  margin: 0 0 -32px 0;
+  margin: 0 0 -48px 0;
   padding-bottom: 2px;
 }
 
@@ -198,14 +236,21 @@ p {
 }
 
 #announcements-cont {
-  background-color: mediumvioletred;
+  background-color: var(--gray);
   display: grid;
+  padding-top: 16px;
+  padding-right: 16px;
   grid-template-rows: max-content 1fr;
-  padding: 1.2rem;
 }
 
 #announcements {
-  background-color: palevioletred;
+  /*background-color: palevioletred;*/
+  background-color: white;
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.2); /* Right and bottom shadow */
+  z-index: 1000;
+  padding: 1.2rem;
+  gap: 32px;
+  border-radius: 10px;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
 }
@@ -218,17 +263,28 @@ p {
 .announce-header {
   margin: 0;
   padding-bottom: 2px;
+  font-size: 0.95rem;
+}
+
+.announce-text {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 0.9rem;
 }
 
 #trending-cont {
-  background-color: deepskyblue;
+  background-color: var(--gray);
   display: grid;
+  padding-right: 16px;
+  padding-bottom: 16px;
   grid-template-rows: max-content 1fr;
-  padding: 1.2rem;
 }
 
 #trending {
-  background-color: darkslateblue;
+  /*background-color: darkslateblue;*/
+  background-color: white;
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.2); /* Right and bottom shadow */
+  padding: 1.2rem;
+  border-radius: 10px;
   display: grid;
   gap: 16px;
   grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -238,4 +294,16 @@ p {
   display: grid;
   gap: 16px;
   grid-template-columns: max-content 1fr;
+}
+
+.trending-name {
+  display: grid;
+  justify-items: start;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.trending-quote {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 0.9rem;
 }
